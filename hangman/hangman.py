@@ -1,7 +1,8 @@
 from random import choice
 
 
-list_word = ['accelerassions', 'organisatrice', 'vikings', 'paix']  
+#list_word = ['accelerassions', 'organisatrice', 'vikings', 'paix']  
+list_word = ['PE', 'PS', 'PA', 'PE', 'PS', 'PA', 'PE', 'PS', 'PA', 'PE', 'PS', 'PA']  
 
 word = choice(list_word)
 
