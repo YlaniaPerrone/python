@@ -1,52 +1,131 @@
-from random import choice
+from random import choice, randbytes
 
 
 def choose_word(list):
     return choice(list)
-    
+
 
 def grid_init(word):
+    border_line = []
+    border_line += '_' * len(word)
+    return border_line
 
-    border_line = ''
+    # border_line = []
+    # for i in range(len(word)):
+    #     border_line += '_'
+    # return border_line
+
+
+def checkCharacterInWord(character, word, border_line):
     for i in range(len(word)):
-        border_line += '_ '
+        if word[i] == character:
+            border_line[i] = character
+
     return border_line
 
 
-def play(list, letter):
-    word = choose_word(list)
+def play():
+
+    print("\n----- Hangman's Game -----\n")
+    tries = 6
+
+    #chooce word
+    word = choose_word(data)
+    print(word)
+
+    # show - according to the number of letters
     grid = grid_init(word)
-   
-    return add_letter(letter, word)
+
+    while '_' in grid and tries > 0:
+        print(display_hangman(tries))
+
+        print(" ".join(grid))
+        print("Remainder " + str(tries) + " tries ")
+
+        character = input('write a character : ').lower()[0]
+
+        if character in word:
+            checkCharacterInWord(character, word, grid)
+
+        else:
+            tries -= 1
+
+    if tries == 0 and ' _ ' in word:
+        print('Pwa Pwa Pwa 😈', '\nthe word was ' + str(word))
+    else:
+        print('\n' + str(word) )
+        print('\nBingoo 🤪🥳')
+        print("You win in " + str(tries) + " tries")
+
+def display_hangman(tries):
+    stages = ["""
+       --------
+       |      |
+       |      O
+       |     \\|/
+       |      |
+       |     / \\
+       -
+       """,
+              """
+       --------
+       |      |
+       |      O
+       |     \\|/
+       |      |
+       |     /
+       -
+       """,
+              """
+       --------
+       |      |
+       |      O
+       |     \\|/
+       |      |
+       |
+       -
+       """,
+              """
+       --------
+       |      |
+       |      O
+       |     \\|
+       |      |
+       |
+       -
+       """,
+              """
+       --------
+       |      |
+       |      O
+       |      |
+       |      |
+       |
+       -
+       """,
+              """
+       --------
+       |      |
+       |      O
+       |
+       |
+       |
+       -
+       """,
+              """
+       --------
+       |      |
+       |      
+       |
+       |
+       |
+       -
+       """
+              ]
+    return stages[tries]
 
 
-def check(user_letter, word):
-
-    letter_played =[]
-    count = 0
-    if user_letter in word:
-        print(word)
-
-        for letter in word:
-            if user_letter == letter:
-                count += 1
-                print(letter)     
-    else: letter_played.appened(user_letter)   
-    print(letter_played) 
-    return count
-    # return grid
+data = ['accélérassions', 'organisatrice', 'vikings', 'paix']
 
 
-def add_letter(user_letter, word):
-    for letter in word:
-        if grid == 'letter':
-            count += 1
-            print(letter)     
-
-    # return grid
-
-data = ['accélérassions', 'organisatrice', 'vikings', 'paix']  
-
-word = str(input('write a letter :'))
-
-print(play(data,word))
+play()
