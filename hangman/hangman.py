@@ -22,11 +22,11 @@ print(count)
 
 
 while  ' _ ' in border_line and count > 0:
-    letter = str(input("Write a character : "))
+    letter = str(input("Write a character : ").upper())
 
     while len(letter) != 1:
     
-        letter = str(input("Write 1 character : "))
+        letter = str(input("Write 1 character : ").upper())
         
     if letter in word:
         for i in range(len(word)):
@@ -42,9 +42,9 @@ while  ' _ ' in border_line and count > 0:
     
     print("".join(border_line))
     print("wrong character " + str(letter_wrong) )
-    print("il te reste " + str(count) + " essaies ")
+    print("Remainder " + str(count) + " tries ")
 
 if count == 0 and ' _ ' in border_line:
-    print('Pwa Pwa Pwa 😈')
+    print('Pwa Pwa Pwa 😈', '\nthe word was ' + str(word))
 else:
-    print('bingoo 🤪🥳')
+    print('Bingoo 🤪🥳')
