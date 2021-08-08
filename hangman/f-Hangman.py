@@ -6,14 +6,14 @@ def choose_word(list):
 
 
 def grid_init(word):
-    border_line = []
-    border_line += '_' * len(word)
-    return border_line
-
     # border_line = []
-    # for i in range(len(word)):
-    #     border_line += '_'
+    # border_line += '_' * len(word)
     # return border_line
+
+    border_line = []
+    for i in range(len(word)):
+        border_line += '_'
+    return border_line
 
 
 def checkCharacterInWord(character, word, border_line):
@@ -27,6 +27,7 @@ def checkCharacterInWord(character, word, border_line):
 def play():
 
     print("\n----- Hangman's Game -----\n")
+    print('Find the name \n')
     tries = 6
 
     #chooce word
@@ -50,8 +51,8 @@ def play():
         else:
             tries -= 1
 
-    if tries == 0 and ' _ ' in word:
-        print('Pwa Pwa Pwa 😈', '\nthe word was ' + str(word))
+    if '_' in grid:
+        print('\nPwa Pwa Pwa 😈', '\nthe word was ' + str(word))
     else:
         print('\n' + str(word) )
         print('\nBingoo 🤪🥳')
@@ -125,7 +126,7 @@ def display_hangman(tries):
     return stages[tries]
 
 
-data = ['accélérassions', 'organisatrice', 'vikings', 'paix']
+data = ['Julian', 'Kaezly', 'Nelia', 'Cayden', 'Sadou']
 
 
 play()
